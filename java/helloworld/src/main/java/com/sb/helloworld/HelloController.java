@@ -1,12 +1,9 @@
 package com.sb.helloworld;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
+import java.time.*;
+import java.time.format.*;
 
 @RestController
 public class HelloController {
@@ -15,9 +12,6 @@ public class HelloController {
     public String index() {
         String dateTimeFormat = "dd/MM/yyyy hh:mm:ss a";
         String timeMessage = null;
-
-        // SimpleDateFormat simpleDateFormat = new SimpleDateFormat(dateTimeFormat);
-        // timeMessage = simpleDateFormat.format(new Date()).toString();
 
         timeMessage = LocalDateTime.now().format(DateTimeFormatter.ofPattern(dateTimeFormat));
         
