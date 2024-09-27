@@ -45,14 +45,15 @@ class ThreadImpl
 
 int main()
 {
-    const int count = 256 * 1024;
-    thread threadUsingFunctionPointer(threadFunction, count);
-    thread threadUsingThreadImpl(ThreadImpl(), count*2);
+    const int count = 128 * 1024;
+    int stage = 0;
+    thread threadUsingFunctionPointer(threadFunction, count * ++stage);
+    thread threadUsingThreadImpl(ThreadImpl(), count * ++stage);
     auto lambdaExpression = [](int count) { wasteCPUCycles(count); };
-    thread threadUsingLambdaExpression(lambdaExpression, count * 3);
+    thread threadUsingLambdaExpression(lambdaExpression, count * ++stage);
     ThreadImpl threadImpl; 
-    thread threadUsingMemberFunction(&ThreadImpl::MemberFunction, &threadImpl, count*4);
-    thread threadUsingStaticFunction(&ThreadImpl::StaticFunction, count*5);
+    thread threadUsingMemberFunction(&ThreadImpl::MemberFunction, &threadImpl, count * ++stage);
+    thread threadUsingStaticFunction(&ThreadImpl::StaticFunction, count * ++stage);
 
     threadUsingFunctionPointer.join();
     cout << "threadUsingFunctionPointer exited." << endl;
