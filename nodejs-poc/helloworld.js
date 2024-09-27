@@ -1,4 +1,5 @@
 var http = require('http');
+var portNo = 8080;
 
 http.createServer(function (req, res) {
 	res.writeHead(200, {'Content-Type':'text/html'});
@@ -6,4 +7,6 @@ http.createServer(function (req, res) {
 	
 	var currentDateTime = new Date();
 	res.end(currentDateTime.toString());
-}).listen(8080);
+}).listen(portNo);
+
+console.log("Server is listening on port #" + portNo + "...");
