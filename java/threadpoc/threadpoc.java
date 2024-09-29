@@ -34,12 +34,22 @@ class ThreadPoc
 {
     public static void main(String[] args) throws Exception
     {
-        int count = 1028 * 1024;
-        int stage = 10;
+        int count = 1024 * 1024 * 128;
+        int stage = 0;
 
         ThreadImpl threadUsingMemberFunction = new ThreadImpl(count * ++stage);
         threadUsingMemberFunction.start();
+
+        int currentCount = count * ++stage;
+        Runnable threadImplUsingLambda = () -> {
+            FakeComputing.WasteCPUCycles(currentCount);
+        };
+        Thread threadUsingLambda = new Thread(threadImplUsingLambda);
+        threadUsingLambda.start();
+
         threadUsingMemberFunction.join();
         System.out.println("threadUsingMemberFunction exited.");
+        threadUsingLambda.join();
+        System.out.println("threadUsingLambda exited.");
     }
 }

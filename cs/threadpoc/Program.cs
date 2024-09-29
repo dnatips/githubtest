@@ -22,13 +22,15 @@ class FakeComputing
 
 class ThreadImpl
 {
-    public static void StaticFunction(Object count)
+    public static void StaticFunction(Object? count)
     {
+        if (count == null) return;
         FakeComputing.WasteCPUCycles((int)count);
     }
 
-    public void MemberFunction(Object count)
+    public void MemberFunction(Object? count)
     {
+        if (count == null) return;
         FakeComputing.WasteCPUCycles((int)count);
     }
 }
@@ -46,7 +48,10 @@ class Program
         Thread threadUsingMemberFunction = new Thread (new ParameterizedThreadStart(threadImpl.MemberFunction));
         threadUsingMemberFunction.Start(count * ++stage);
 
-        Thread threadUsingLambda = new Thread((Object count) => { FakeComputing.WasteCPUCycles((int)count); });
+        Thread threadUsingLambda = new Thread((Object? count) => { 
+            if (count == null) return;
+            FakeComputing.WasteCPUCycles((int)count);
+        });
         threadUsingLambda.Start(count * ++stage);
 
         threadUsingStaticFunction.Join();
