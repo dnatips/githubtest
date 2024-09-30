@@ -39,7 +39,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        int count = 128 * 1024;
+        int count = 1024 * 1024;
         int stage = 0;
         Thread threadUsingStaticFunction = new Thread (new ParameterizedThreadStart(ThreadImpl.StaticFunction));
         threadUsingStaticFunction.Start(count * ++stage);

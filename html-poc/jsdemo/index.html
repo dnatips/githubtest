@@ -1,0 +1,40 @@
+<html>
+<head>
+    <title>Javascript Demo</title>
+    <script>
+    	let div1 = document.getElementById('div1');
+        let unicycle = document.getElementsByClassName('unicycle');
+        let div1Unicycle = div1.getElementsByClassName('unicycle');
+        let paragraphs = document.getElementsByTagName('p');
+        let div1Paragraphs = div1.getElementsByTagName('p');
+        let queryUnicycle = document.querySelector('.unicycle');
+        let queryDiv2Unicycle = document.querySelector('#div2');
+        let queryAll = document.querySelectorAll('.unicycle, #div2');
+        var html = "<h1>Hello World</h1>";
+        var text = "Hello World";
+
+        div1.innerHTML = html;
+        queryUnicycle.innerHTML = html;
+
+        //for(i = 0; i < queryAll.length; ++i) {
+        //	queryAll[i].innerHTML = html;
+        //}
+
+        for(i = 0; i < queryAll.length; ++i) {
+            queryAll[i].textContent = text;
+        }
+    </script>
+</head>
+<body>
+    <P>Some outer text</P>
+    <p class="unicycle">Some outer text</p>
+    <div id="div1" style="border: solid blue 3px">
+        <p>Some div1 text</p>
+        <p class="unicycle">Some div1 text</p>
+        <div id="div2" style="border: solid red 3px">
+            <p>Some div2 text</p>
+            <p class="unicycle">Some div2 text</p>
+        </div>
+    </div>
+</body>
+</html>
