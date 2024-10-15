@@ -11,3 +11,7 @@ accountPassword = "a1b2c3";
 accountCity = "Pune";
 console.log("After modifications...");
 console.table([accountId,accountEmail,accountPassword,accountCity]);
+
+let bigNo = 987654321987654321n;
+console.log(typeof bigNo);
+console.log(bigNo + 1n);
