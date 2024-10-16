@@ -1,0 +1,18 @@
+let aDate = new Date();
+console.log(aDate);
+console.log();
+console.log(aDate.toString());
+console.log(aDate.toLocaleString());
+console.log();
+console.log(aDate.toDateString());
+console.log(aDate.toLocaleDateString());
+console.log(aDate.toTimeString());
+console.log(aDate.toLocaleTimeString());
+console.log();
+console.log(aDate.toISOString());
+console.log(aDate.toUTCString());
+console.log();
+console.log(aDate.toJSON());
+console.log();
+console.log(navigator.language);
+console.log(navigator.languages);
