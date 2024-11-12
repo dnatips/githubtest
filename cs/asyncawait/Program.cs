@@ -4,22 +4,11 @@ using System;
 using System.IO;
 using System.Threading;
 
-enum OperationStatus
-{
-    None,
-    NotStarted,
-    InProgress,
-    Cancelled,
-    Completed
-}
-
 class Program
 {
     static async Task Main(string[] args)
     {
-        OperationStatus operationStatus = OperationStatus.NotStarted;
         Console.CancelKeyPress += delegate { 
-            operationStatus = OperationStatus.Cancelled;
             Console.WriteLine();
             Console.WriteLine("User cancelled the copy operation!!");
         };
@@ -27,27 +16,56 @@ class Program
         var fileInfo = new FileInfo(filePath);
         Console.WriteLine("Size of {0} is {1}.", filePath, fileInfo.Length);
         CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
-        operationStatus = OperationStatus.InProgress;
         Task<string> fileReadTask = File.ReadAllTextAsync(filePath, cancellationTokenSource.Token);
         Console.WriteLine("Reading file async way...");
-        while(operationStatus == OperationStatus.InProgress)
+        bool keepRunning = true;
+        while(keepRunning)
         {
-            if(fileReadTask.IsCompletedSuccessfully)
+            var taskStatus = fileReadTask.Status;
+            switch(taskStatus)
             {
-                operationStatus = OperationStatus.Completed;
+                case TaskStatus.RanToCompletion:
+                {
+                    try
+                    {
+                        string text = await fileReadTask;
+                        Console.WriteLine();
+                        Console.WriteLine(text.Length);
+                        keepRunning = false;
+                    }
+                    catch(Exception exception)
+                    {
+                        Console.WriteLine();
+                        Console.WriteLine(exception.Message);
+                        Console.WriteLine(exception.StackTrace);
+                    }
+                    break;
+                }
+                case TaskStatus.Canceled:
+                case TaskStatus.Faulted:
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Task failed or canceled.");
+                    keepRunning = false;
+                    break;
+                }
+                case TaskStatus.Created:
+                case TaskStatus.WaitingForActivation:
+                case TaskStatus.WaitingToRun:
+                case TaskStatus.Running:
+                {
+                    Console.Write(".");
+                    Thread.Sleep(500);
+                    break;
+                }
+                default:
+                {
+                    Console.WriteLine();
+                    Console.WriteLine(string.Format("Unexpected task Status - {0}.", taskStatus));
+                    keepRunning = false;
+                    break;
+                }
             }
-            else
-            {
-                Console.Write(".");
-                Thread.Sleep(500);
-            }
-        }
-
-        if(operationStatus == OperationStatus.Completed)
-        {
-            string text = await fileReadTask;
-            Console.WriteLine();
-            Console.WriteLine(text.Length);
         }
     }
 }
