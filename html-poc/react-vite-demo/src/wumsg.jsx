@@ -1,6 +1,6 @@
 function Message() {
 	return(
-		<h3>What's up!</h3>
+		<h3>What&rsquo;s up!</h3>
 	) 
 }
 

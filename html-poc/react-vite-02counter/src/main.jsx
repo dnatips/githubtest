@@ -5,6 +5,7 @@ import './index.css'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+    <h1>What&rsquo;s up, Vite React!!</h1>
     <App />
   </StrictMode>,
 )
