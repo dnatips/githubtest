@@ -16,20 +16,20 @@ function App() {
         style={{backgroundColor: color}}>
           <div className='fixed flex flex-wrap justify-center bottom-12 inset-x-0 px-2'>
             <div className='flex flex-wrap justify-center gap-3 shadow-lg bg-gray-500 px-3 py-2 rounded-3xl'>
-              <ColorButton buttonColor="red" onClickParentHandler={handleColorButtonClicked} />
-              <ColorButton buttonColor="green" onClickParentHandler={handleColorButtonClicked} />
-              <ColorButton buttonColor="blue" onClickParentHandler={handleColorButtonClicked} />
-              <ColorButton buttonColor="olive" onClickParentHandler={handleColorButtonClicked} />
-              <ColorButton buttonColor="grey" onClickParentHandler={handleColorButtonClicked} />
-              <ColorButton buttonColor="yellow" textClass='text-black' onClickParentHandler={handleColorButtonClicked} />
-              <ColorButton buttonColor="pink" textClass='text-black' onClickParentHandler={handleColorButtonClicked} />
-              <ColorButton buttonColor="purple" onClickParentHandler={handleColorButtonClicked} />
-              <ColorButton buttonColor="lavender" textClass='text-black' onClickParentHandler={handleColorButtonClicked} />
-              <ColorButton buttonColor="black" onClickParentHandler={handleColorButtonClicked} />
-              <ColorButton buttonColor="white" textClass='text-black' onClickParentHandler={handleColorButtonClicked} />
-              <ColorButton buttonColor="cyan" textClass='text-black' onClickParentHandler={handleColorButtonClicked} />
-              <ColorButton buttonColor="lime" textClass='text-black' onClickParentHandler={handleColorButtonClicked} />
-              <ColorButton buttonColor="orange" textClass='text-black' onClickParentHandler={handleColorButtonClicked} />
+              <ColorButton buttonColor="red" onClickHandler={handleColorButtonClicked} />
+              <ColorButton buttonColor="green" onClickHandler={handleColorButtonClicked} />
+              <ColorButton buttonColor="blue" onClickHandler={handleColorButtonClicked} />
+              <ColorButton buttonColor="olive" onClickHandler={handleColorButtonClicked} />
+              <ColorButton buttonColor="grey" onClickHandler={handleColorButtonClicked} />
+              <ColorButton buttonColor="yellow" textClass='text-black' onClickHandler={handleColorButtonClicked} />
+              <ColorButton buttonColor="pink" textClass='text-black' onClickHandler={handleColorButtonClicked} />
+              <ColorButton buttonColor="purple" onClickHandler={handleColorButtonClicked} />
+              <ColorButton buttonColor="lavender" textClass='text-black' onClickHandler={handleColorButtonClicked} />
+              <ColorButton buttonColor="black" onClickHandler={handleColorButtonClicked} />
+              <ColorButton buttonColor="white" textClass='text-black' onClickHandler={handleColorButtonClicked} />
+              <ColorButton buttonColor="cyan" textClass='text-black' onClickHandler={handleColorButtonClicked} />
+              <ColorButton buttonColor="lime" textClass='text-black' onClickHandler={handleColorButtonClicked} />
+              <ColorButton buttonColor="orange" textClass='text-black' onClickHandler={handleColorButtonClicked} />
             </div>
           </div>
       </div>
