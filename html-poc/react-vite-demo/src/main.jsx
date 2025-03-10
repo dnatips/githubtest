@@ -1,16 +1,13 @@
 // import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
-
-function GetCurrentDateTime(){
-  return (new Date()).toLocaleString();
-}
+import CurrentDateTime from './CurrentDateTime.jsx';
+import FruitProducts from './FruitProducts.jsx';
 
 createRoot(document.getElementById('root')).render(
   <>
     <App />
-    <GetCurrentDateTime />
-  </>,
+    <CurrentDateTime />
+    <FruitProducts />
+  </>
 )
-
-export default GetCurrentDateTime
